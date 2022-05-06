@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  install-deps:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: yarn-packages-v0-${{ github.sha }}
+          restore-keys: |
+            yarn-packages-v0-
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - run: yarn --frozen-lockfile
+        shell: bash
+  code-generate:
+    runs-on: ubuntu-latest
+    needs:
+      - install-deps
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          submodules: recursive
+      - uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: yarn-packages-v0-${{ github.sha }}
+          restore-keys: |
+            yarn-packages-v0-
+      - uses: actions/cache@v2
+        with:
+          path: src
+          key: api-cliet-v0-${{ github.sha }}
+          restore-keys: |
+            api-cliet-v0-
+      - run: |
+          sh scripts/gen-openapi.sh
+        shell: bash
+  build-app:
+    runs-on: ubuntu-latest
+    needs:
+      - install-deps
+      - code-generate
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: yarn-packages-v0-${{ github.sha }}
+          restore-keys: |
+            yarn-packages-v0-
+      - uses: actions/cache@v2
+        with:
+          path: src
+          key: api-cliet-v0-${{ github.sha }}
+          restore-keys: |
+            api-cliet-v0-
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - run: yarn build
+        shell: bash
