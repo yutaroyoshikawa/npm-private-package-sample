@@ -1,0 +1,22 @@
+{
+  "name": "npm-private-package-sample",
+  "version": "0.0.1",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "module": "module/index.js",
+  "repository": "git@github.com:yutaroyoshikawa/npm-private-package-sample.git",
+  "author": "yutaroyoshikawa <yoshikawa.yutaro@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rimraf lib/ module/",
+    "build:lib": "tsc",
+    "build:module": "tsc -p tsconfig.json",
+    "build": "run-s clean build:*",
+    "clean-openapi": "rimraf src/index.ts src/runtime.ts src/apis/ src/models/"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.6.4"
+  }
+}

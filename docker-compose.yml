@@ -1,0 +1,18 @@
+version: "3"
+services:
+  openapi-generator-cli:
+    image: openapitools/openapi-generator-cli:v5.2.0
+    command:
+      [
+        "generate",
+        "-i",
+        "/tmp/src/resources/openapi.yaml",
+        "-o",
+        "/tmp/dist",
+        "-g",
+        "typescript-fetch",
+        "--additional-properties=typescriptThreePlus=true"
+      ]
+    volumes:
+      - ./submodules/spa_guide_sns_server:/tmp/src
+      - ./src:/tmp/dist
