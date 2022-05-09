@@ -24,7 +24,7 @@ jobs:
           git config --global user.name "${GIT_AUTHOR_NAME}"
           git config --global user.email "${GIT_AUTHOR_EMAIL}"
           cd submodules/spa_guide_sns_server
-          git checkout ${GIT_TAG}
+          git checkout v${GIT_TAG}
           cd ../
           git add -A && git commit -m "chore: checkout API version v${GIT_TAG}"
           git push -u origin ${BRANCH_NAME}
