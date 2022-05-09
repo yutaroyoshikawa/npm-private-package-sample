@@ -28,7 +28,7 @@ jobs:
           cd ../
           git add -A && git commit -m "chore: checkout API version v${GIT_TAG}"
           git push -u origin ${BRANCH_NAME}
-      - uses: actions/github-script@3
+      - uses: actions/github-script@v3
         env:
           GIT_TAG: ${{ github.event.inputs.api_version_tag }}
           BRANCH_NAME: api_version_tag/v${{ github.event.inputs.api_version_tag }}
