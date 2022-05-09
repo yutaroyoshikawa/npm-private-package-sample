@@ -43,4 +43,7 @@ jobs:
               base: "main",
               body: `Checkout API version v${GIT_TAG}`
             })
-          
+      - name: merge PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr merge ${{ steps.cpr.outputs.pull-request-url }} --auto
