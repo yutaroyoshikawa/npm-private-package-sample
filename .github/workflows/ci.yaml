@@ -1,9 +1,8 @@
 name: CI
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
-  push:
+  - pull_request:
+  - push:
     branches:
       - main
 
