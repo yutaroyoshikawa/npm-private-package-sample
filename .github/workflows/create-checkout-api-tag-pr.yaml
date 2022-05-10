@@ -42,10 +42,10 @@ jobs:
             github.pulls.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              title: `chore: checkout API version v${GIT_TAG}`,
+              title: `chore: checkout API version v${process.env.GIT_TAG}`,
               head: process.env.BRANCH_NAME,
               base: "main",
-              body: `Checkout API version v${GIT_TAG}`
+              body: `Checkout API version v${process.env.GIT_TAG}`
             })
       - name: merge PR
         env:
