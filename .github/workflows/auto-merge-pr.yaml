@@ -4,7 +4,7 @@ on: pull_request_target
 
 jobs:
   checkout-api-tag-pr:
-    if: github.event.pull_request.opend == true && startsWith(github.event.pull_request.ref, 'api_version_tag/v')
+    if: github.event.pull_request.opend == true && startsWith(github.event.pull_request.head.ref, 'api_version_tag/v')
     runs-on: ubuntu-latest
     steps:
       - run: |
