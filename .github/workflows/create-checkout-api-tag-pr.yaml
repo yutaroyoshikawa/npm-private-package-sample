@@ -29,6 +29,7 @@ jobs:
         run: |
           git config --global user.name "${GIT_AUTHOR_NAME}"
           git config --global user.email "${GIT_AUTHOR_EMAIL}"
+          git switch -c ${BRANCH_NAME}
           git add -A && git commit -m "chore: checkout API version v${GIT_TAG}"
           git push -u origin ${BRANCH_NAME}
       - uses: actions/github-script@v3
