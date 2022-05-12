@@ -20,6 +20,12 @@ jobs:
           GIT_TAG: ${{ github.event.inputs.api_version_tag }}
         run: |
           git checkout v${GIT_TAG}
+      - name: install-deps
+        uses: ./.github/actions/install-deps
+      - name: code-generate
+        uses: ./.github/actions/code-generate
+      - name: build-app
+        uses: ./.github/actions/build-app
       - name: Commit diff
         env:
           GIT_TAG: ${{ github.event.inputs.api_version_tag }}

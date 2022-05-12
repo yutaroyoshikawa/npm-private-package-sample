@@ -1,0 +1,24 @@
+name: code-generate
+
+description: 'code generate'
+
+runs:
+  using: 'composite'
+  steps:
+    - uses: actions/checkout@v3
+    - uses: actions/cache@v2
+      with:
+        path: node_modules
+        key: yarn-packages-v0-${{ hashFiles('yarn.lock') }}
+        restore-keys: |
+          yarn-packages-v0-
+    - uses: actions/cache@v2
+      with:
+        path: src
+        key: api-client-v0-${{ github.sha }}
+        restore-keys: |
+          api-client-v0-
+    - name: code generate
+      run: |
+        sh scripts/gen-openapi.sh
+      shell: bash
