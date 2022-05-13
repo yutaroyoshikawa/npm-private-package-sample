@@ -1,7 +1,14 @@
 name: CI
 
 on:
-  - push
+  pull_request:
+    types: 
+      - opened
+      - synchronize
+      - reopened
+  push:
+    branches:
+      - master
 
 jobs:
   install-deps:
@@ -17,7 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          submodules: recursive
+          submodules: true
       - name: code-generate
         uses: ./.github/actions/code-generate
   build-app:
