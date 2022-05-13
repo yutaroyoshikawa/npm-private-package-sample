@@ -69,4 +69,4 @@ jobs:
           BRANCH_NAME: api_version_tag/v${{ github.event.inputs.api_version_tag }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh pr create -t "chore: checkout API version v${GIT_TAG}" -b "Checkout API version v${GIT_TAG}" -H ${BRANCH_NAME} -B main -l Dependencies 
+          gh pr create -t "chore: checkout API version v${GIT_TAG}" -b "Checkout API version v${GIT_TAG}" -H ${BRANCH_NAME} -B main -l "Type: Dependences"
