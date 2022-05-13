@@ -36,9 +36,7 @@ jobs:
           GITHUB_AUTH: ${{ secrets.GITHUB_TOKEN }}
           NEW_VERSION: ${{ github.event.inputs.version }}
         run: |
-          echo 'CHANGELOG<<EOF' >> $GITHUB_ENV
-          yarn lerna-changelog --next-version ${NEW_VERSION} >> $GITHUB_ENV
-          echo 'EOF' >> $GITHUB_ENV
+          echo $(yarn lerna-changelog --next-version ${NEW_VERSION})
         shell: bash
       - uses: actions/github-script@v3
         env:
