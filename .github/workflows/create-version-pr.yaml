@@ -32,14 +32,14 @@ jobs:
           git push -u origin ${BRANCH_NAME}
       - name: Generate changelog
         id: generate-changelog
-        run: |
-          echo "CHANGELOG<<EOF" >> $GITHUB_ENV
-          $(yarn bin)/lerna-changelog --next-version ${NEW_VERSION} >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
-        shell: bash
         env:
           GITHUB_AUTH: ${{ secrets.GITHUB_TOKEN }}
           NEW_VERSION: ${{ github.event.inputs.version }}
+        run: |
+          echo "CHANGELOG<<EOS" >> $GITHUB_ENV
+          $(yarn bin)/lerna-changelog --next-version ${NEW_VERSION} >> $GITHUB_ENV
+          echo "EOS" >> $GITHUB_ENV
+        shell: bash
       - uses: actions/github-script@v3
         env:
           NEW_VERSION: ${{ github.event.inputs.version }}
