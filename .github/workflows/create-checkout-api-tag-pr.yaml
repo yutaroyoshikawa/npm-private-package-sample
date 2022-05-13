@@ -76,5 +76,6 @@ jobs:
               title: `chore: checkout API version v${process.env.GIT_TAG}`,
               head: process.env.BRANCH_NAME,
               base: "main",
-              body: `Checkout API version v${process.env.GIT_TAG}`
+              body: `Checkout API version v${process.env.GIT_TAG}`,
+              labels: ['Dependencies']
             })
