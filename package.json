@@ -15,8 +15,22 @@
     "clean-openapi": "rimraf src/index.ts src/runtime.ts src/apis/ src/models/"
   },
   "devDependencies": {
+    "lerna-changelog": "^2.2.0",
     "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2",
     "typescript": "^4.6.4"
+  },
+  "changelog": {
+    "labels": {
+      "Type: Breaking Change": ":boom: Breaking Change",
+      "Type: Feature": ":rocket: Features",
+      "Type: Bug": ":bug: Bug Fixes",
+      "Type: Implement": ":sparkles: Implement",
+      "Type: Documentation": ":pencil: Documentation",
+      "Type: Refactoring": ":recycle: Refactoring",
+      "Type: Testing": ":white_check_mark: Testing",
+      "Type: Maintenance": ":wrench: Maintenance",
+      "Type: Dependencies": ":pushpin: Dependencies"
+    }
   }
 }
