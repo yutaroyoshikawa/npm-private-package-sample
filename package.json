@@ -1,6 +1,6 @@
 {
   "name": "@yutaro_yoshikawa/spa-guide-js",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "module": "module/index.js",
@@ -34,5 +34,8 @@
       "Type: Maintenance": ":wrench: Maintenance",
       "Type: Dependencies": ":pushpin: Dependencies"
     }
+  },
+  "dependencies": {
+    "@yutaro_yoshikawa/spa-guide-js": "^0.0.5"
   }
 }
