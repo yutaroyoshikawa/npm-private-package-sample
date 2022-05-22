@@ -1,6 +1,6 @@
 {
-  "name": "@yutaro_yoshikawa/spa-guide-js",
-  "version": "0.0.9",
+  "name": "@yutaroyoshikawa/spa-guide-js",
+  "version": "0.0.10",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "module": "module/index.js",
