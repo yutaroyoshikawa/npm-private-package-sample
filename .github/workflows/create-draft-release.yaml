@@ -1,0 +1,40 @@
+name: create-draft-release
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [closed]
+
+jobs:
+  create-draft-release:
+    if: github.event.pull_request.merged == true && startsWith(github.head_ref, 'version/v')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        whith:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'yarn'
+      - name: install-deps
+        uses: ./.github/actions/install-deps
+      - name: prepare-release
+        env:
+          GITHUB_AUTH: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          NEW_VERSION=(node -p 'require("./package.json").version')
+          echo "TAG_NAME=v${NEW_VERSION}" >> $GITHUB_ENV
+          echo "CHANGELOG<<EOF" >> $GITHUB_ENV
+          $(yarn bin)/learna-changelog --next-version ${NEW_VERSION} >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+      - uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.TAG_NAME }}
+          release_name: ${{ env.TAG_NAME }}
+          body: ${{ env.CHANGELOG }}
+          draft: true
+          prerelease: false
