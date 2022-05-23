@@ -8,12 +8,6 @@ runs:
     - uses: actions/checkout@v3
     - uses: actions/cache@v2
       with:
-        path: node_modules
-        key: yarn-packages-v0-${{ hashFiles('yarn.lock') }}
-        restore-keys: |
-          yarn-packages-v0-
-    - uses: actions/cache@v2
-      with:
         path: src
         key: api-client-v0-${{ github.sha }}
         restore-keys: |
