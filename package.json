@@ -35,7 +35,5 @@
       "Type: Dependencies": ":pushpin: Dependencies"
     }
   },
-  "dependencies": {
-    "@yutaro_yoshikawa/spa-guide-js": "^0.0.8"
-  }
+  "dependencies": {}
 }
