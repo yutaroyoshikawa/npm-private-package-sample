@@ -12,6 +12,12 @@ runs:
         key: api-client-v0-${{ github.sha }}
         restore-keys: |
           api-client-v0-
+    - uses: actions/cache@v2
+      with:
+        path: node_modules
+        key: yarn-packages-v0-${{ hashFiles('yarn.lock') }}
+        restore-keys: |
+          yarn-packages-v0-
     - uses: actions/setup-node@v3
       with:
         node-version: '16'

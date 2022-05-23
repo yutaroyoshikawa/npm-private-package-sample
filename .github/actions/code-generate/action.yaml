@@ -5,7 +5,12 @@ description: 'code generate'
 runs:
   using: 'composite'
   steps:
-    - uses: actions/checkout@v3
+    - uses: actions/cache@v2
+      with:
+        path: node_modules
+        key: yarn-packages-v0-${{ hashFiles('yarn.lock') }}
+        restore-keys: |
+          yarn-packages-v0-
     - uses: actions/setup-node@v3
       with:
         node-version: '16'
