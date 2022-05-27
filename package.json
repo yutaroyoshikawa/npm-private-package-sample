@@ -13,7 +13,7 @@
     "build:module": "tsc -p tsconfig.json",
     "build": "run-s clean build:*",
     "clean-openapi": "rimraf src/index.ts src/runtime.ts src/apis/ src/models/",
-    "artifactregistry-login": "npx google-artifactregistry-auth --repo-config=./.npmrc --credential-config=./.npmrc"
+    "artifactregistry-login": "npx google-artifactregistry-auth"
   },
   "devDependencies": {
     "google-artifactregistry-auth": "^3.0.0",
