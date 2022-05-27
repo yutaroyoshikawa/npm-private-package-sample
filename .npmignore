@@ -6,3 +6,4 @@ submodules/
 .npmprc
 docker-compose.yml
 .gitmodules
+gha-creds-*-.json
