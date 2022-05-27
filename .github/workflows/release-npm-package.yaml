@@ -41,10 +41,10 @@ jobs:
       - uses: google-github-actions/auth@v0.6.0
         env:
           GCP_WI_PROVIDER: projects/1091314836174/locations/global/workloadIdentityPools/github-actions-deploy-ar/providers/Github-Actions
-          SERVICE_ACCOUNT: test-467@web-feature-toggle-sample.iam.gserviceaccount.com
+          GCP_SERVICE_ACCOUNT: test-467@web-feature-toggle-sample.iam.gserviceaccount.com
         with:
           workload_identity_provider: ${{ env.GCP_WI_PROVIDER }}
-          service_account: 
+          service_account: ${{ env.GCP_SERVIVE_ACCOUNT }}
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v0.5.1
         env:
