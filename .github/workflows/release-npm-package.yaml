@@ -35,7 +35,7 @@ jobs:
           GCP_SERVICE_ACCOUNT: test-467@web-feature-toggle-sample.iam.gserviceaccount.com
         with:
           workload_identity_provider: ${{ env.GCP_WI_PROVIDER }}
-          service_account: ${{ env.GCP_SERVIVE_ACCOUNT }}
+          service_account: ${{ env.GCP_SERVICE_ACCOUNT }}
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v0.5.1
         env:
