@@ -1,8 +1,8 @@
 name: release-npm-package
 
 on:
-  create:
-    ref-type: tag
+  release:
+    types: [published]
 
 jobs:
   install-deps:
