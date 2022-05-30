@@ -30,8 +30,8 @@ jobs:
       id-token: 'write'
     steps:
       - uses: actions/checkout@v3
-      - name: build-app
-        uses: ./.github/actions/build-app
+      - name: build-package
+        uses: ./.github/actions/build-package
       - id: auth
         uses: google-github-actions/auth@v0.8.0
         env:
