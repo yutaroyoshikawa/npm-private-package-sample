@@ -49,18 +49,18 @@ jobs:
           submodules: true
       - name: code-generate
         uses: ./.github/actions/code-generate
-  build-app:
+  build-package:
     runs-on: ubuntu-latest
     needs:
       - code-generate
     steps:
       - uses: actions/checkout@v3
-      - name: build-app
-        uses: ./.github/actions/build-app
+      - name: build-package
+        uses: ./.github/actions/build-package
   create-pr:
     runs-on: ubuntu-latest
     needs:
-      - build-app
+      - build-package
     steps:
       - uses: actions/checkout@v3
       - name: create-pr
