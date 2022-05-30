@@ -5,7 +5,7 @@ private npm package のサンプル
 ## getting started
 
 ```bash
+$ npm install
 $ sh scripts/gen-openapi.sh
-$ yarn install
-$ yarn build
+$ npm run build
 ```

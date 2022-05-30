@@ -23,7 +23,7 @@ jobs:
           NEW_VERSION=$(node -p 'require("./package.json").version')
           echo "TAG_NAME=v${NEW_VERSION}" >> $GITHUB_ENV
           echo "CHANGELOG<<EOF" >> $GITHUB_ENV
-          $(yarn bin)/lerna-changelog --next-version ${NEW_VERSION} >> $GITHUB_ENV
+          $(npm bin)/lerna-changelog --next-version ${NEW_VERSION} >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
       - uses: actions/create-release@v1
         env:

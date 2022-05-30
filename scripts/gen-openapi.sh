@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 set -ex
 
-yarn clean-openapi
+npm run clean-openapi
 docker-compose run --rm openapi-generator-cli
