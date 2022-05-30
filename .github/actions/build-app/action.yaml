@@ -14,12 +14,12 @@ runs:
     - uses: actions/cache@v2
       with:
         path: node_modules
-        key: yarn-packages-v0-${{ hashFiles('yarn.lock') }}
+        key: npm-packages-v0-${{ hashFiles('package-lock.json') }}
         restore-keys: |
-          yarn-packages-v0-
+          npm-packages-v0-
     - uses: actions/setup-node@v3
       with:
         node-version: '16'
-        cache: 'yarn'
-    - run: yarn build
+        cache: 'npm'
+    - run: npm run build
       shell: bash

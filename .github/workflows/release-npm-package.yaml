@@ -47,9 +47,6 @@ jobs:
         with:
           project_id: ${{ env.GCP_PROJECT }}
       - name: upload package
-        env:
-          PUBLISH_REGISTRY: https://asia-northeast1-npm.pkg.dev/web-feature-toggle-sample/spa-guide-js/
         run: |
-          yarn artifactregistry-login
-          NEW_VERSION=$(node -p 'require("./package.json").version')
-          yarn publish --non-interactive --new-version=$NEW_VERSION --registry="${PUBLISH_REGISTRY}"
+          npm run artifactregistry-login
+          npm publish
